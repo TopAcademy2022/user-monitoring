@@ -3,10 +3,17 @@ using user_monitoring_gui.Models;
 
 namespace user_monitoring.Services
 {
+    /// @brief Class representing the console user interface for the application.
+    ///
+    /// This class implements the IUserInterface interface and provides methods
+    /// to display menus and handle user interactions in a console application.
     public class ConsoleUserInterface : IUserInterface
     {
         private WordBanList _wordBanList;
         private Setting _setting;
+        /// @brief Initializes a new instance of the ConsoleUser Interface class.
+        /// @param setting The settings to be used by the interface.
+        /// @param wordBanList The list of banned words to be managed.
 
         public ConsoleUserInterface(Setting setting, WordBanList wordBanList)
         {
@@ -14,6 +21,11 @@ namespace user_monitoring.Services
             this._wordBanList = wordBanList;
         }
 
+        /// @brief Displays the main menu and handles user selection.
+        ///
+        /// This method continuously displays the main menu until the user selects
+        /// the exit option. It processes user input and calls the appropriate
+        /// methods based on the selected menu item.
         public void PrintMenu()
         {
 
@@ -68,7 +80,11 @@ namespace user_monitoring.Services
                 }
             }
         }
-
+        /// @brief Displays the settings menu and allows the user to modify settings.
+        ///
+        /// This method displays the current settings and allows the user to toggle
+        /// each setting on or off. The menu continues to display until the user
+        /// selects the option to go back.
         public void PrintMenuSettings()
         {
             int numberMenuElement = 0;
@@ -127,7 +143,11 @@ namespace user_monitoring.Services
 
             }
         }
-
+        /// @brief Displays the menu for managing the banned words list.
+        ///
+        /// This method displays options for adding or removing words from the banned
+        /// words list. The menu continues to display until the user selects the
+        /// option to return to the main menu.
         public void PrintMenuWordBanList()
         {
 
@@ -172,6 +192,9 @@ namespace user_monitoring.Services
             }
         }
 
+        /// @brief Prompts the user to add a word to the banned list.
+        ///
+        /// This method reads a word from the user and adds it to the banned words list.
         public void PrintAddWordToBanList()
         {
             Console.WriteLine("Введите слово, которое нужно добавить в список запрещенных:");
@@ -179,7 +202,9 @@ namespace user_monitoring.Services
             string word = Console.ReadLine();
             _wordBanList.AddWord(word);
         }
-
+        /// @brief Prompts the user to remove a word from the banned list.
+        ///
+        /// This method reads a word from the user and removes it from the banned words list.
         public void PrintRemoveWordFromBanList()
         {
             Console.WriteLine("Введите слово, которое нужно удалить из списка запрещенных:");
@@ -187,6 +212,10 @@ namespace user_monitoring.Services
             string word = Console.ReadLine();
             _wordBanList.RemoveWord(word);
         }
+        /// @brief Displays the current banned words list.
+        ///
+        /// This method retrieves and displays the list of banned words. If the list
+        /// is empty, it informs the user.
         public void PrintBanList()
         {
             List<string> banList = _wordBanList.GetWordBanList();
@@ -209,16 +238,23 @@ namespace user_monitoring.Services
             Console.ReadKey(true);
         }
 
+        /// @brief Displays the menu for managing the banned programs list.
+        ///
+        /// This method is currently not implemented.
         public void PrintMenuProgramBanList()
         {
 
         }
-
+        /// @brief Executes the main program functionality.
+        ///
+        /// This method is currently not implemented.
         public void RunProgram()
         {
 
         }
-
+        /// @brief Displays the statistics menu.
+        ///
+        /// This method is currently not implemented.
         public void PrintMenuStatistic()
         {
 
